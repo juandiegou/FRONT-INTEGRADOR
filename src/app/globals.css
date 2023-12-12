@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -24,4 +24,99 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+} */
+
+/*
+  Based on TailwindCSS recommendations,
+  consider using classes instead of the `@apply` directive
+  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
+*/
+:root {
+  --dl-color-gray-500: #595959;
+  --dl-color-gray-700: #999999;
+  --dl-color-gray-800: #595959;
+  --dl-color-gray-900: #d9d9d9;
+  --dl-size-size-large: 144px;
+  --dl-size-size-small: 48px;
+  --dl-color-danger-300: #a22020;
+  --dl-color-danger-500: #bf2626;
+  --dl-color-danger-700: #e14747;
+  --dl-color-gray-black: #000000;
+  --dl-color-gray-white: #ffffff;
+  --dl-size-size-medium: 96px;
+  --dl-size-size-xlarge: 192px;
+  --dl-size-size-xsmall: 16px;
+  --dl-space-space-unit: 16px;
+  --dl-color-primary-100: #003eb3;
+  --dl-color-primary-300: #0074f0;
+  --dl-color-primary-500: #14a9ff;
+  --dl-color-primary-700: #85dcff;
+  --dl-color-success-300: #199033;
+  --dl-color-success-500: #32a94c;
+  --dl-color-success-700: #4cc366;
+  --dl-size-size-xxlarge: 288px;
+  --dl-size-size-maxwidth: 1400px;
+  --dl-radius-radius-round: 50%;
+  --dl-space-space-halfunit: 8px;
+  --dl-space-space-sixunits: 96px;
+  --dl-space-space-twounits: 32px;
+  --dl-color-primary1-blue80: #5228f5ff;
+  --dl-radius-radius-radius2: 2px;
+  --dl-radius-radius-radius4: 4px;
+  --dl-radius-radius-radius8: 8px;
+  --dl-space-space-fiveunits: 80px;
+  --dl-space-space-fourunits: 64px;
+  --dl-color-primary1-blue100: #291477ff;
+  --dl-space-space-threeunits: 48px;
+  --dl-color-secondary-gray500: #d9d9d9ff;
+  --dl-color-secondary-grey400: #eff0f2ff;
+  --dl-space-space-oneandhalfunits: 24px;
+}
+.button {
+  @apply text-[color:var(--dl-color-gray-black)] inline-block border-[color:var(--dl-color-gray-black)] border rounded bg-[color:var(--dl-color-gray-white)] px-4 py-2;
+}
+.input {
+  @apply text-[color:var(--dl-color-gray-black)] cursor-auto border-[color:var(--dl-color-gray-black)] border rounded bg-[color:var(--dl-color-gray-white)] px-4 py-2;
+}
+.textarea {
+  @apply text-[color:var(--dl-color-gray-black)] cursor-auto border-[color:var(--dl-color-gray-black)] border rounded bg-[color:var(--dl-color-gray-white)] p-2;
+}
+.list {
+  @apply w-full block list-none list-outside mx-0 my-[1em] pl-6 pr-0 py-0;
+}
+
+.teleport-show {
+  @apply flex;
+  transform: none !important;
+}
+.heading2 {
+  @apply text-[2.5rem];
+}
+.heading1 {
+  @apply text-7xl font-bold;
+}
+.sectionTitle {
+  @apply text-base font-bold tracking-[1.2] uppercase;
+}
+.heading3 {
+  @apply text-[1.8rem];
+}
+.Content {
+  @apply text-base font-normal leading-[1.15] normal-case no-underline;
+  font-family: Inter;
+}
+.Heading {
+  @apply text-[32px] font-bold leading-[1.15] normal-case no-underline;
+  font-family: Inter;
+}
+@media (max-width: 767px) {
+  .heading2 {
+    @apply text-[1.8rem];
+  }
+  .heading1 {
+    @apply text-[2.5rem];
+  }
+  .heading3 {
+    @apply text-[1.1rem];
+  }
 }
