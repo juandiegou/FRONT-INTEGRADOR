@@ -1,19 +1,40 @@
 import {AiFillEdit, AiFillDelete} from 'react-icons/ai';
 import React, { useState } from "react";
 import Header from './header';
+import modalities from './modalities.json';
+import makeRequest from '../api/request';
 
-const EditCohortForm = ({ student, onSave,changeEdit }) => {
-  const [editedStudent, setEditedStudent] = useState({ ...student });
+const EditCohortForm = ({ cohort, onSave,changeEdit }) => {
+  const [editedCohort, setEditedCohort] = useState({ ...cohort });
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setEditedStudent((prev) => ({ ...prev, [name]: value }));
+    setEditedCohort((prev) => ({ ...prev, [name]: value }));
   };
 
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Call the onSave function with the edited student data
-    onSave(editedStudent);
+    // Call the onSave function with the edited cohort data
+    console.log("editedCohort", editedCohort);
+    const req = {
+        "id": editedCohort.id,
+        "startDate": editedCohort.startDate,
+        "modality": Number(editedCohort.modality),
+        "agreement": editedCohort.agreement,
+        "expense": editedCohort.expense,
+        "registration": editedCohort.registration,
+        "subject": editedCohort.subject,
+        "periods": Number(editedCohort.periods),
+    }
+
+    makeRequest.put(`Cohort/${cohort.id}`, req ).then((result) => {
+        console.log("results", result);
+      }
+    ).catch((error) => {
+        console.error('Error al obtener datos de la API:', error.message);
+    });
+
+    onSave(editedCohort);
   };
 
   return (
@@ -25,20 +46,33 @@ const EditCohortForm = ({ student, onSave,changeEdit }) => {
         <input
           type="date"
           name="startDate"
-          value={editedStudent.name}
+          value={editedCohort.name}
           onChange={handleChange}
           className="block w-full mt-1 p-2 border border-gray-300 rounded-md"
         />
       </label>
       <label className="block mb-2">
-        Modalidad:
+        Periodos:
         <input
-          type="text"
-          name="modality"
-          value={editedStudent.email}
+          type="number"
+          name="periods"
+          value={editedCohort.periods}
           onChange={handleChange}
-          className="block w-full mt-1 p-2 border border-gray-300 rounded-md"
+          className="block w-full mt-1 p-2 border border-gray-300 rounded-md" 
+          step={1}
+          min={1}
+          max={10}
         />
+      </label>
+
+      <label className="block mb-2">
+        Modalidad:
+        <input list="modality" name="modality" id="modalities" className="block w-full border border-gray-300 rounded-md" onChange={handleChange} />
+            <datalist id="modality">
+                {modalities && modalities.map((modality) => (
+                    <option key={modality.value} value={modality.value} onChange={handleChange} >{modality.name}</option>
+                ))}
+            </datalist>
       </label>
       <button
         type="submit"

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from './header';
 import makeRequest from '../api/request';
+import { Router } from "next/router";
 
 
 const EditStudentForm = ({ student, onSave, changeEdit }) => {
@@ -14,25 +15,25 @@ const EditStudentForm = ({ student, onSave, changeEdit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const req = {
-        "id": editedStudent.id,
-        "name": editedStudent.name,
-        "document": editedStudent.document,
-        "email": editedStudent.email,
-        "phone": editedStudent.phone,
-        "address": editedStudent.address,
-        "code": editedStudent.code,
-        "discount": editedStudent.discount,
+      "id": editedStudent.id,
+      "name": editedStudent.name,
+      "document": editedStudent.document,
+      "email": editedStudent.email,
+      "phone": editedStudent.phone,
+      "address": editedStudent.address,
+      "code": editedStudent.code,
+      "discount": editedStudent.discount,
     }
 
     if(editedStudent.discount == undefined) {
-       req["discount"]= [
-            {
-                "id": 0,
-                "percentage": 0,
-                "cost": 0,
-                "type": "null"
-            }
-       ]
+      req["discount"]= [
+        {
+          "id": 0,
+          "percentage": 0,
+          "cost": 0,
+          "type": "null"
+        }
+      ]
     }
 
 

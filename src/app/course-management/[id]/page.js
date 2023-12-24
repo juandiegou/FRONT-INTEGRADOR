@@ -12,11 +12,13 @@ const CourseComponent = ( course ) => {
     const handleEditClick = () => {
       setIsEditMode(true);
     };
+
   
     const handleSaveChanges = (editedcourse) => {
 
-      console.log("Saving changes:", editedcourse);
-      setIsEditMode(false);
+        console.log("Saving changes:", editedcourse);
+        setIsEditMode(false);
+        setcourseData(editedcourse);    
     };
 
     useEffect(() => {
@@ -37,8 +39,19 @@ const CourseComponent = ( course ) => {
     const cancelEdit = () => {
         setIsEditMode(false);
     };
+
+    const deleteCourse = () => {
+        makeRequest.delete(`Subject/${course.params.id}`).then((result) => {
+            console.log("results", result);
+            }
+        ).catch((error) => {
+            console.error('Error al obtener datos de la API:', error.message);
+        }).finally(() => {
+            window.location.href = '/course-management';
+        });
+    }
   
-    //if (course === undefined) return <Loader />; 
+    if (course === undefined) return <Loader />; 
 
     return (
         <>
@@ -50,9 +63,11 @@ const CourseComponent = ( course ) => {
                 <div className="w-full p-2">
                     <div className="bg-white border rounded shadow-md p-4">
                         <div className="flex justify-end">
-                            <button className="text-blue-500 hover:underline grid gap-4 grid-cols-2">
+                            <button className="text-blue-500 hover:underline grid gap-4 grid-cols-2"
+                                onClick={deleteCourse}
+                            >
                                 < div className='w/2'>                                
-                                    Delete Profile
+                                    Delete Course
                                 </div>
                                 <div className='w/2'>
                                     <AiFillDelete size={20} title='Delete Profile' />
@@ -64,7 +79,7 @@ const CourseComponent = ( course ) => {
                                 onClick={handleEditClick}
                             >
                                 <div className='w/2'>
-                                    Edit Profile
+                                    Edit Course
                                 </div>
                                 <div className='w/2'>
                                     <AiFillEdit size={20} title='Edit Profile' />

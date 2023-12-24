@@ -1,0 +1,230 @@
+[
+    {
+        "conventionalName": "Gasto General",
+        "name": "GeneralExpense",
+        "data": {
+            "1": {
+                "name": "total",
+                "type": "number"
+            },
+            "2": {
+                "name": "criterion",
+                "type": "string"
+            },
+            "3": {
+                "name": "unitValue",
+                "type": "number"
+            },
+            "4": {
+                "name": "quantity",
+                "type": "number"
+            },
+            "5": {
+                "name": "typeCost",
+                "type": "string"
+            }
+        }
+    },
+    {
+        "conventionalName": "Gasto de Inversión",
+        "name": "InvestmentExpense",
+        "data": {
+            "1": {
+                "name": "total",
+                "type": "number"
+            },
+            "2": {
+                "name": "typeService",
+                "type": "string"
+            },
+            "3": {
+                "name": "descriptionService",
+                "type": "string"
+            },
+            "4": {
+                "name": "percentageService",
+                "type": "number"
+            },
+            "5": {
+                "name": "costService",
+                "type": "number"
+            }
+        }
+    },
+    {
+        "conventionalName": "Otros Gastos",
+        "name": "OtherExpense",
+        "data": {
+            "1": {
+                "name": "total",
+                "type": "number"
+            },
+            "2": {
+                "name": "criterion",
+                "type": "string"
+            },
+            "3": {
+                "name": "unitValue",
+                "type": "number"
+            },
+            "4": {
+                "name": "quantity",
+                "type": "number"
+            },
+            "5": {
+                "name": "typeCost",
+                "type": "string"
+            }
+        }
+    },
+    {
+        "conventionalName": "Gasto de Personal no Docente",
+        "name": "OtherExpenseNonTeachingStaff",
+        "data": {
+            "1": {
+                "name": "total",
+                "type": "number"
+            },
+            "2": {
+                "name": "serviceName",
+                "type": "string"
+            },
+            "3": {
+                "name": "serviceType",
+                "type": "string"
+            },
+            "4": {
+                "name": "serviceCost",
+                "type": "number"
+            },
+            "5": {
+                "name": "unitCostService",
+                "type": "number"
+            },
+            "6": {
+                "name": "quantityService",
+                "type": "number"
+            }
+        }
+    },
+    {
+        "conventionalName": "Gasto de Personal Docente",
+        "name": "OtherExpenseTeachingStaff",
+        "data": {
+            "1": {
+                "name": "total",
+                "type": "number"
+            },
+            "2": {
+                "name": "serviceName",
+                "type": "string"
+            },
+            "3": {
+                "name": "serviceType",
+                "type": "string"
+            },
+            "4": {
+                "name": "serviceCost",
+                "type": "number"
+            },
+            "5": {
+                "name": "descriptionService",
+                "type": "string"
+            },
+            "6": {
+                "name": "teacherName",
+                "type": "string"
+            },
+            "7": {
+                "name": "numberHoursService",
+                "type": "number"
+            },
+            "8": {
+                "name": "costHourlyService",
+                "type": "number"
+            },
+            "9": {
+                "name": "typeCostService",
+                "type": "string"
+            }
+        }
+    },
+    {
+        "conventionalName": "Gastos Recurrentes",
+        "name": "RecurrentCost",
+        "data": {
+            "1": {
+                "name": "total",
+                "type": "number"
+            },
+            "2": {
+                "name": "unitName",
+                "type": "string"
+            },
+            "3": {
+                "name": "hourlyRate",
+                "type": "number"
+            },
+            "4": {
+                "name": "numberHours",
+                "type": "number"
+            }
+        }
+    },
+    {
+        "conventionalName": "Gastos de Transferencias",
+        "name": "TransferExpense",
+        "data": {
+            "1": {
+                "name": "total",
+                "type": "number"
+            },
+            "2": {
+                "name": "typeService",
+                "type": "string"
+            },
+            "3": {
+                "name": "descriptionService",
+                "type": "string"
+            },
+            "4": {
+                "name": "percentageService",
+                "type": "number"
+            },
+            "5": {
+                "name": "costService",
+                "type": "number"
+            }
+        }
+    },
+    {
+        "conventionalName": "Gastos de Viaje",
+        "name": "TravelExpense",
+        "data": {
+            "1": {
+                "name": "total",
+                "type": "number"
+            },
+            "2": {
+                "name": "destination",
+                "type": "string"
+            },
+            "3": {
+                "name": "numberPeople",
+                "type": "number"
+            },
+            "4": {
+                "name": "transportCost",
+                "type": "number"
+            },
+            "5": {
+                "name": "travelCost",
+                "type": "number"
+            },
+            "6": {
+                "name": "numberTravel",
+                "type": "number"
+            }
+        }
+    }
+]

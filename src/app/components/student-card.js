@@ -23,7 +23,7 @@ const StudentCard = ({student}) => {
                                                         pathname: `/student-management/${student.id}`
                                                     }}
                                                     student={student}
-                                                    key={student.id}
+                                                    key={"student-link-"+`${student.id}`}
                                                 className="text-blue-500 hover:underline grid gap-4 grid-cols-2"
                                         >
                                             Ver perfil

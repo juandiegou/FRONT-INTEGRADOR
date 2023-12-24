@@ -2,24 +2,21 @@ import {AiFillEdit, AiFillDelete} from 'react-icons/ai';
 import React, { useState, useEffect } from "react";
 import makeRequest from '../api/request';
 import Header from './header';
+import modalities from './modalities.json';
 
 const EditCohortForm = ({ course, onSave, changeEdit }) => {
   const [editedcourse, setEditedcourse] = useState({ ...course });
   const [teacher, setTeacher] = useState(null);
 
   useEffect(() => {
-    // makeRequest('get', `Teacher`).then((result) => {
-    //     setTeacher(result);
-    //     console.log("results", result);
-    //     })
     makeRequest.get(`Teacher`).then((result) => {
         setTeacher(result.data);
         console.log("results", result);
       }
     ).catch((error) => {
         console.error('Error al obtener datos de la API:', error.message);
-    });
-    }, []);
+    })
+  }, []);
 
 
   const handleChange = (e) => {
@@ -29,23 +26,24 @@ const EditCohortForm = ({ course, onSave, changeEdit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("editedcourse", editedcourse);
+    const selectedTeacher = teacher.find((teacher) => teacher.id === Number(editedcourse.teacher));
+    console.log("selectedTeacher", selectedTeacher);
     const req = {
         "id": editedcourse.id,
         "name": editedcourse.name,
-        "modality": Number(editedcourse.modality  || 0),
-        "teacher": teacher[0],
+        "modality": Number(editedcourse.modality?editedcourse.modality:0),
+        "teacher": {
+          "id": selectedTeacher.id?selectedTeacher.id:0,
+          "name": selectedTeacher.name?selectedTeacher.name:"",
+          "leader": selectedTeacher.leader?selectedTeacher.leader:{},
+
+        }
     }
 
-    // makeRequest('put', `Subject/${course.id}`,req).then((result) => {
-    //   console.log("results", result);
-    // }
-    // ).catch((error) => {
-        
-    //       console.error('Error al obtener datos de la API:', error.message);
-    //   }
-    // );
     makeRequest.put(`Subject/${course.id}`,req).then((result) => {
         console.log("results", result);
+        
       }
     ).catch((error) => {
           
@@ -53,7 +51,6 @@ const EditCohortForm = ({ course, onSave, changeEdit }) => {
         } 
     );
 
-    // Call the onSave function with the edited course data
     onSave(editedcourse);
   };
 
@@ -73,20 +70,19 @@ const EditCohortForm = ({ course, onSave, changeEdit }) => {
       </label>
       <label className="block mb-2">
         modalidad:
-        <input
-          type="text"
-          name="modality"
-          value={editedcourse.email}
-          onChange={handleChange}
-          className="block w-full mt-1 p-2 border border-gray-300 rounded-md"
-        />
+        <input list="modality" name="modality" id="modalities" className="block w-full border border-gray-300 rounded-md" onChange={handleChange} />
+            <datalist id="modality">
+                {modalities && modalities.map((modality) => (
+                    <option key={modality.value} value={modality.value} onChange={handleChange}>{modality.name}</option>
+                ))}
+            </datalist>
       </label>
       <label className="block mb-2">
         profesor:
         <input list="teacher" name="teacher" id="teachers" className="block w-full border border-gray-300 rounded-md" onChange={handleChange} />
             <datalist id="teacher">
                 {teacher && teacher.map((teacher) => (
-                    <option key={teacher.id0} value={teacher.id}>{teacher.name}</option>
+                    <option key={teacher.id} value={teacher.id} onChange={handleChange}>{teacher.name}</option>
                 ))}
             </datalist>
        </label>

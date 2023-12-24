@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Presencial",
+        "value": 0
+    },
+    {
+        "name": "Virtual",
+        "value": 1
+    },
+    {
+        "name": "Hibrida",
+        "value": 2
+    }
+]
