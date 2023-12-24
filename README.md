@@ -17,12 +17,13 @@
 
 - **Experiencia del Usuario Mejorada:** Mejora la experiencia de los estudiantes al proporcionar herramientas fáciles de usar para realizar la matrícula y realizar un seguimiento de su progreso académico.
 
-# Reuisitos previos
+# Requisitos previos
 Para correr este proyecto se recomienda correr primero el backend
 para eso ir a [BACKEND](https://github.com/juandiegou/BACK-INTEGRADOR)
-además antes de correr el frontend se requiere instalar node js  version 21.0.0
+además antes de correr el frontend se requiere instalar node js  version 21.0.0.
+
+En la raiz del proyecto se debe correr el siguiente comando para instalar las dependencias
 ```bash
-# En la raiz del proyecto se debe correr el siguiente comando para instalar las dependencias
     yarn 
 ```
 
